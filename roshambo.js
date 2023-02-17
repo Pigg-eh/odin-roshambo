@@ -11,3 +11,11 @@ write new function called game(). Call the playRound function inside
 this one to play a 5 round game that keeps score and reports a winner
 or loser at the end.
 */
+
+/*
+algorithm
+1. get input from user (rock paper or scissors)
+2. get input from computer player (random)
+3. compare two strings and determine a winner
+4. print out result
+*/
