@@ -28,3 +28,18 @@ algorithm
 3. compare two strings and determine a winner 
 4. print out result 
 */
+
+function getComputerChoice () {
+    switch (Math.floor (Math.random(2) * 100)){
+        case 0:
+            choice = 'rock'
+            break;
+        case 1:
+            choice = 'paper'
+            break;
+        case 2:
+            choice = 'scissors'
+            break;
+    }
+    return choice; //not returning any values?
+}
