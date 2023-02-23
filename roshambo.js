@@ -38,4 +38,4 @@ function getComputerChoice () {
 }
 console.log (getComputerChoice())
 
-function getPlayerChoice
+//function getPlayerChoice
