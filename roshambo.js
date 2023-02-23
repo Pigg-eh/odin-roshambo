@@ -24,22 +24,18 @@ algorithm
     need to begin with this one)
     -get a random number between 1 and 3
     -associate number with strings
-    -return result
+    -return result ///////////////
 3. compare two strings and determine a winner 
 4. print out result 
 */
 
+
 function getComputerChoice () {
-    switch (Math.floor (Math.random(2) * 100)){
-        case 0:
-            choice = 'rock'
-            break;
-        case 1:
-            choice = 'paper'
-            break;
-        case 2:
-            choice = 'scissors'
-            break;
-    }
-    return choice; //not returning any values?
+    rand = parseInt(Math.floor (Math.random() *3));
+    if (rand === 2) return 'rock'
+    if (rand === 1) return 'paper'
+    if (rand === 0) return 'scissors'   
 }
+console.log (getComputerChoice())
+
+function getPlayerChoice
