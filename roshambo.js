@@ -42,14 +42,14 @@ console.log (getComputerChoice())
 
 function getPlayerChoice () {
     let pChoice = prompt ('ROSHAMBO! (Rock, Paper, Scissors)'); 
-    pChoice = pChoice.toLowerCase();
-    if (pChoice !== 'rock' || 'paper' || 'scissors') {
+    loweredChoice = pChoice.toLowerCase();
+    if (loweredChoice !== 'rock' || 'paper' || 'scissors') {
         let pChoice = prompt ('Please type Rock, Paper, or Scissors)')
     } else {
-        return getPlayerChoice (pChoice)    
+        return getPlayerChoice (loweredChoice)    
     } 
     
-} //in the right order but not the right inputs
+} //Just goes through the whole if block on its own
 console.log (getPlayerChoice())
 //not putting the parenthesis in the console log kills the program for some reason
 /* 
