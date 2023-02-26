@@ -1,13 +1,10 @@
 console.log ("So it begins")
 /* get getComputerChoice => randomly returns rock paper or scissors
  (debug to make sure it is working properly)
-
  function that plays a single round of roshambo. 2 parameters 
  playerSelection(case insensitive) and computerSelection- returns a 
  string that declares the winner of the round
-
 return the results of function call not console.lgo
-
 write new function called game(). Call the playRound function inside 
 this one to play a 5 round game that keeps score and reports a winner
 or loser at the end.
@@ -32,25 +29,31 @@ algorithm
 
 function getComputerChoice () {
     rand = parseInt(Math.floor (Math.random() *3));
-    if (rand === 2) return 'rock'
-    if (rand === 1) return 'paper'
-    if (rand === 0) return 'scissors'   
+    if (rand === 2) return 'rock';
+    if (rand === 1) return 'paper';
+    if (rand === 0) return 'scissors';
 }
 console.log (getComputerChoice())
 
-
-
-function getPlayerChoice () {
-    let pChoice = prompt ('ROSHAMBO! (Rock, Paper, Scissors)'); 
-    loweredChoice = pChoice.toLowerCase();
-    if (loweredChoice !== 'rock' || 'paper' || 'scissors') {
-        let pChoice = prompt ('Please type Rock, Paper, or Scissors)')
+function playerSelection () {
+    let choose = prompt ('Rock paper scissors')
+    let chooseLower = choose.toLowerCase()
+    if (chooseLower === 'rock') {
+        return 'rock'
+    } else if (chooseLower === 'paper') {
+        return 'paper'
+    } else if (chooseLower === 'scissors'){
+        return 'scissors'
     } else {
-        return getPlayerChoice (loweredChoice)    
-    } 
-    
-} //Just goes through the whole if block on its own
-console.log (getPlayerChoice())
+        return playerSelection();
+    }
+  } //unga bunga code works
+console.log (playerSelection())
+
+
+
+ //in the right order but not the right inputs
+
 //not putting the parenthesis in the console log kills the program for some reason
 /* 
     
