@@ -33,9 +33,10 @@ function getComputerChoice () {
     if (rand === 1) return 'paper';
     if (rand === 0) return 'scissors';
 }
-console.log (getComputerChoice())
+let computerSelection = getComputerChoice()
+console.log(computerSelection)
 
-function playerSelection () {
+function getPlayerChoice () {
     let choose = prompt ('Rock paper scissors')
     let chooseLower = choose.toLowerCase()
     if (chooseLower === 'rock') {
@@ -45,10 +46,11 @@ function playerSelection () {
     } else if (chooseLower === 'scissors'){
         return 'scissors'
     } else {
-        return playerSelection();
+        return getPlayerChoice();
     }
   } //unga bunga code works
-console.log (playerSelection())
+let playerSelection = getPlayerChoice()
+console.log(playerSelection)
 
 
 
@@ -56,5 +58,6 @@ console.log (playerSelection())
 
 //not putting the parenthesis in the console log kills the program for some reason
 /* 
-    
+LEARNINGS
+- the function must return a console.log or be put in a variable to work i guess?
 */ 
