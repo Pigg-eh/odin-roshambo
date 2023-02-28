@@ -19,8 +19,8 @@ function getComputerChoice () {
     if (rand === 1) return 'paper';
     if (rand === 0) return 'scissors';
 }
-let computerSelection = getComputerChoice()
-console.log(computerSelection)
+// let computerSelection = getComputerChoice()
+// console.log(computerSelection)
 
 function getPlayerChoice () {
     let choose = prompt ('Rock paper scissors')
@@ -35,36 +35,36 @@ function getPlayerChoice () {
         return getPlayerChoice();
     }
   } //unga bunga code works
-let playerSelection = getPlayerChoice()
-console.log(playerSelection)
+// let playerSelection = getPlayerChoice()
+// console.log(playerSelection)
 
 
 function playRound(computerSelection, playerSelection) {
 
     if (computerSelection === playerSelection) {
-            return ('tie')
+            return ('YOU BOTH PICKED THE SAME | TIE')
         }  else if (computerSelection === 'rock') {
             if (playerSelection === 'scissors'){
-                alert ('Computer: Rock | You: Scissors')
+                alert ('Computer: Rock | You: Scissors | YOU LOSE')
                 return (false);
             } else if (playerSelection === 'paper'){
-                alert ('Computer: Rock | You: Paper')
+                alert ('Computer: Rock | You: Paper | YOU WIN')
                 return (true);
             }
         }  else if (computerSelection === 'paper') {
             if (playerSelection === 'rock'){
-                alert ('Computer: Paper | You: Rock')
+                alert ('Computer: Paper | You: Rock | YOU LOSE')
                 return (false);
             } else if (playerSelection === 'scissors'){
-                alert ('Computer: Paper | You: Scissors')
+                alert ('Computer: Paper | You: Scissors | YOU WIN')
                 return (true);
             }
         } else  if (computerSelection === 'scissors'){
             if (playerSelection === 'paper'){
-                alert ('Computer: Scissors | You: Paper')
+                alert ('Computer: Scissors | You: Paper | YOU LOSE')
                 return (false);
             } else if (playerSelection === 'rock'){
-                alert ('Computer: Scissors | You: Rock')
+                alert ('Computer: Scissors | You: Rock | YOU WIN')
                 return (true);
             }
         }
@@ -74,35 +74,37 @@ function playRound(computerSelection, playerSelection) {
         
 
         function game (playerScore, computerScore){
-
             for (let i = 0; i < 5; i++){
-            if (playRound('tie')){
-                alert ('tie!')
+            
+            if (i = 0){
+                getComputerChoice ()
+                getPlayerChoice()
+                playRound()
+            }
+            else if (playRound('tie')){
                 getComputerChoice ()
                 getPlayerChoice()
                 playRound()
             } else if (playRound ()===true) {
                 playerScore ++
-                alert ('WINNERINO!')
                 getComputerChoice ()
                 getPlayerChoice()
                 playRound()
             } else if (playRound ()===false){
                 computerScore ++
-                alert('LOSERINO')
                 getComputerChoice ()
                 getPlayerChoice()
                 playRound()
             }
             Alert (`The score is Player:` + game(playerScore) + `-Computer:` + game(computerScore)) 
             }
-        } // function doesnt seem to run 
-        
+        } 
+    
 
 
 
-let resulto = playRound(computerSelection, playerSelection)
-alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelection+ `. It is a ` + resulto)
+// let resulto = playRound(computerSelection, playerSelection)
+// alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelection+ `. It is a ` + resulto)
 
 
 
