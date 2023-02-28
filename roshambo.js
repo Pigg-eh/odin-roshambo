@@ -49,9 +49,9 @@ function playRound(computerSelection, playerSelection) {
                 return ('win');
             }
         }  else if (computerSelection === 'paper') {
-            if (playerSelection = 'rock'){
+            if (playerSelection === 'rock'){
                 return ('loss');
-            } else if (playerSelection = 'scissors'){
+            } else if (playerSelection === 'scissors'){
                 return ('win');
             }
         } else  if (computerSelection === 'scissors'){
