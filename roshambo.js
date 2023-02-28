@@ -11,7 +11,62 @@ algorithm
 4. print out result 
 */
 
+game()
 
+function game (playerScore, computerScore){
+    
+            
+    for (let i = 0; i < 5; i++){
+       if (i === 0){
+        playerScore = 0
+        computerScore = 0
+       } 
+       if (i <5){
+        playRound()
+        if (playRound(true)) {playerScore++}
+        if (playRound(false)) {computerScore++}
+        console.log(`Player:`+ playerScore)
+        console.log(`Computer:`+ computerScore)
+        console.log(`round `+ i)
+       } else if (i === 5)
+       return (`Final Score Player:`+ playerScore` Computer:` + computerScore)
+}
+} //check if i is incrementing
+console.log(game())
+
+function playRound(computerSelection, playerSelection) {
+    computerSelection = getComputerChoice()
+    playerSelection = getPlayerChoice()
+
+            if (computerSelection === 'rock') {
+                if (playerSelection === 'scissors'){
+                    alert ('Computer: Rock | You: Scissors | YOU LOSE')
+                    return (false);
+                } else if (playerSelection === 'paper'){
+                    alert ('Computer: Rock | You: Paper | YOU WIN')
+                    return (true);
+                }
+            }  else if (computerSelection === 'paper') {
+                if (playerSelection === 'rock'){
+                    alert ('Computer: Paper | You: Rock | YOU LOSE')
+                    return (false);
+                } else if (playerSelection === 'scissors'){
+                    alert ('Computer: Paper | You: Scissors | YOU WIN')
+                    return (true);
+                }
+            } else  if (computerSelection === 'scissors'){
+                if (playerSelection === 'paper'){
+                    alert ('Computer: Scissors | You: Paper | YOU LOSE')
+                    return (false);
+                } else if (playerSelection === 'rock'){
+                    alert ('Computer: Scissors | You: Rock | YOU WIN')
+                    return (true);
+                }
+            } else if (computerSelection === playerSelection) {
+                alert ('YOU BOTH PICKED THE SAME | TIE') 
+                playRound()     
+            } //finally working
+        }
 
 function getComputerChoice () {
     rand = parseInt(Math.floor (Math.random() *3));
@@ -19,8 +74,8 @@ function getComputerChoice () {
     if (rand === 1) return 'paper';
     if (rand === 0) return 'scissors';
 }
-// let computerSelection = getComputerChoice()
-// console.log(computerSelection)
+let computerSelection = getComputerChoice()
+console.log(computerSelection)
 
 function getPlayerChoice () {
     let choose = prompt ('Rock paper scissors')
@@ -39,67 +94,12 @@ function getPlayerChoice () {
 // console.log(playerSelection)
 
 
-function playRound(computerSelection, playerSelection) {
-
-    if (computerSelection === playerSelection) {
-            return ('YOU BOTH PICKED THE SAME | TIE')
-        }  else if (computerSelection === 'rock') {
-            if (playerSelection === 'scissors'){
-                alert ('Computer: Rock | You: Scissors | YOU LOSE')
-                return (false);
-            } else if (playerSelection === 'paper'){
-                alert ('Computer: Rock | You: Paper | YOU WIN')
-                return (true);
-            }
-        }  else if (computerSelection === 'paper') {
-            if (playerSelection === 'rock'){
-                alert ('Computer: Paper | You: Rock | YOU LOSE')
-                return (false);
-            } else if (playerSelection === 'scissors'){
-                alert ('Computer: Paper | You: Scissors | YOU WIN')
-                return (true);
-            }
-        } else  if (computerSelection === 'scissors'){
-            if (playerSelection === 'paper'){
-                alert ('Computer: Scissors | You: Paper | YOU LOSE')
-                return (false);
-            } else if (playerSelection === 'rock'){
-                alert ('Computer: Scissors | You: Rock | YOU WIN')
-                return (true);
-            }
-        }
-        
-        } //finally working
 
         
 
-        function game (playerScore, computerScore){
-            for (let i = 0; i < 5; i++){
-            
-            if (i = 0){
-                getComputerChoice ()
-                getPlayerChoice()
-                playRound()
-            }
-            else if (playRound('tie')){
-                getComputerChoice ()
-                getPlayerChoice()
-                playRound()
-            } else if (playRound ()===true) {
-                playerScore ++
-                getComputerChoice ()
-                getPlayerChoice()
-                playRound()
-            } else if (playRound ()===false){
-                computerScore ++
-                getComputerChoice ()
-                getPlayerChoice()
-                playRound()
-            }
-            Alert (`The score is Player:` + game(playerScore) + `-Computer:` + game(computerScore)) 
-            }
-        } 
-    
+        
+
+   
 
 
 
