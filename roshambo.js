@@ -12,6 +12,7 @@ algorithm
 */
 
 
+
 function getComputerChoice () {
     rand = parseInt(Math.floor (Math.random() *3));
     if (rand === 2) return 'rock';
@@ -44,36 +45,66 @@ function playRound(computerSelection, playerSelection) {
             return ('tie')
         }  else if (computerSelection === 'rock') {
             if (playerSelection === 'scissors'){
-                return ('loss');
+                alert ('Computer: Rock | You: Scissors')
+                return (false);
             } else if (playerSelection === 'paper'){
-                return ('win');
+                alert ('Computer: Rock | You: Paper')
+                return (true);
             }
         }  else if (computerSelection === 'paper') {
             if (playerSelection === 'rock'){
-                return ('loss');
+                alert ('Computer: Paper | You: Rock')
+                return (false);
             } else if (playerSelection === 'scissors'){
-                return ('win');
+                alert ('Computer: Paper | You: Scissors')
+                return (true);
             }
         } else  if (computerSelection === 'scissors'){
             if (playerSelection === 'paper'){
-                return ('loss');
+                alert ('Computer: Scissors | You: Paper')
+                return (false);
             } else if (playerSelection === 'rock'){
-                return ('win');
+                alert ('Computer: Scissors | You: Rock')
+                return (true);
             }
         }
         
         } //finally working
 
+        
 
-// coming back as a tie regardless
+        function game (playerScore, computerScore){
+
+            for (let i = 0; i < 5; i++){
+            if (playRound('tie')){
+                alert ('tie!')
+                getComputerChoice ()
+                getPlayerChoice()
+                playRound()
+            } else if (playRound ()===true) {
+                playerScore ++
+                alert ('WINNERINO!')
+                getComputerChoice ()
+                getPlayerChoice()
+                playRound()
+            } else if (playRound ()===false){
+                computerScore ++
+                alert('LOSERINO')
+                getComputerChoice ()
+                getPlayerChoice()
+                playRound()
+            }
+            Alert (`The score is Player:` + game(playerScore) + `-Computer:` + game(computerScore)) 
+            }
+        } // function doesnt seem to run 
+        
+
+
 
 let resulto = playRound(computerSelection, playerSelection)
 alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelection+ `. It is a ` + resulto)
 
-//its a tie
-//computer picks rock
-//computer picks paper
-//computer picks scissors 
+
 
 
 
@@ -83,31 +114,31 @@ alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelectio
 /*  
 LEARNINGS
 - the function must return a console.log or be put in a variable to work i guess?
+- if else statements have to be specific if htere are layers
 */ 
 
- //OLD WORKING PLAYROUND WITHOUT PARAMETERS//
-// function playRound() {
-// //determine if there is a tie
-// if (computerSelection === playerSelection) {
-//     return ('tie')
-// }  else if (computerSelection === 'rock') {
-//     if (playerSelection === 'scissors'){
-//         return ('loss');
-//     } else {
-//         return ('win');
-//     }
-// }  else if (computerSelection === 'paper') {
-//     if (playerSelection = 'rock'){
-//         return ('loss');
-//     } else {
-//         return ('win');
-//     }
-// } else  {
-//     if (playerSelection === 'paper'){
-//         return ('loss');
-//     } else {
-//         return ('win');
-//     }
-// }
+// function playRound(computerSelection, playerSelection) {
 
-// }
+//     if (computerSelection === playerSelection) {
+//             return ('tie')
+//         }  else if (computerSelection === 'rock') {
+//             if (playerSelection === 'scissors'){
+//                 return ('loss');
+//             } else if (playerSelection === 'paper'){
+//                 return ('win');
+//             }
+//         }  else if (computerSelection === 'paper') {
+//             if (playerSelection === 'rock'){
+//                 return ('loss');
+//             } else if (playerSelection === 'scissors'){
+//                 return ('win');
+//             }
+//         } else  if (computerSelection === 'scissors'){
+//             if (playerSelection === 'paper'){
+//                 return ('loss');
+//             } else if (playerSelection === 'rock'){
+//                 return ('win');
+//             }
+//         }
+        
+//         }
