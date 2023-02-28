@@ -1,9 +1,4 @@
-/* get getComputerChoice => randomly returns rock paper or scissors
- (debug to make sure it is working properly)
- function that plays a single round of roshambo. 2 parameters 
- playerSelection(case insensitive) and computerSelection- returns a 
- string that declares the winner of the round
-return the results of function call not console.lgo
+/*
 write new function called game(). Call the playRound function inside 
 this one to play a 5 round game that keeps score and reports a winner
 or loser at the end.
@@ -43,34 +38,39 @@ let playerSelection = getPlayerChoice()
 console.log(playerSelection)
 
 
-function round () {
-//determine if there is a tie
-if (computerSelection === playerSelection) {
-    return ('tie')
-}  else if (computerSelection === 'rock') {
-    if (playerSelection === 'scissors'){
-        return ('lose');
-    } else {
-        return ('win');
-    }
-}  else if (computerSelection === 'paper') {
-    if (playerSelection = 'rock'){
-        return ('lose');
-    } else {
-        return ('win');
-    }
-} else  {
-    if (playerSelection === 'paper'){
-        return ('lose');
-    } else {
-        return ('win');
-    }
-}
+function playRound(computerSelection, playerSelection) {
 
-}
-let resulto = round()
-alert (`Computer picked ` + computerSelection + ` You picked ` + playerSelection+ ` It is a ` + resulto)
+    if (computerSelection === playerSelection) {
+            return ('tie')
+        }  else if (computerSelection === 'rock') {
+            if (playerSelection === 'scissors'){
+                return ('loss');
+            } else if (playerSelection === 'paper'){
+                return ('win');
+            }
+        }  else if (computerSelection === 'paper') {
+            if (playerSelection = 'rock'){
+                return ('loss');
+            } else if (playerSelection = 'scissors'){
+                return ('win');
+            }
+        } else  if (computerSelection === 'scissors'){
+            if (playerSelection === 'paper'){
+                return ('loss');
+            } else if (playerSelection === 'rock'){
+                return ('win');
+            }
+        }
+        
+        } //finally working
 
+
+// coming back as a tie regardless
+
+let resulto = playRound(computerSelection, playerSelection)
+alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelection+ `. It is a ` + resulto)
+
+//its a tie
 //computer picks rock
 //computer picks paper
 //computer picks scissors 
@@ -80,7 +80,34 @@ alert (`Computer picked ` + computerSelection + ` You picked ` + playerSelection
 
 
 
-/* 
+/*  
 LEARNINGS
 - the function must return a console.log or be put in a variable to work i guess?
 */ 
+
+ //OLD WORKING PLAYROUND WITHOUT PARAMETERS//
+// function playRound() {
+// //determine if there is a tie
+// if (computerSelection === playerSelection) {
+//     return ('tie')
+// }  else if (computerSelection === 'rock') {
+//     if (playerSelection === 'scissors'){
+//         return ('loss');
+//     } else {
+//         return ('win');
+//     }
+// }  else if (computerSelection === 'paper') {
+//     if (playerSelection = 'rock'){
+//         return ('loss');
+//     } else {
+//         return ('win');
+//     }
+// } else  {
+//     if (playerSelection === 'paper'){
+//         return ('loss');
+//     } else {
+//         return ('win');
+//     }
+// }
+
+// }
