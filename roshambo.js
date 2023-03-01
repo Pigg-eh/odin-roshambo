@@ -11,20 +11,21 @@ algorithm
 4. print out result 
 */
 
-game()
-
+game(0,0)
+// is supposed to play 5 rounds of playRound()???????
 function game (playerScore, computerScore){
     
             
     for (let i = 0; i < 5; i++){
-       if (i === 0){
-        playerScore = 0
-        computerScore = 0
-       } 
+    //    if (i === 0){
+    //     playerScore = 0
+    //     computerScore = 0
+    //    }  **not needed if you define parmeters
        if (i <5){
-        playRound()
-        if (playRound(true)) {playerScore++}
-        if (playRound(false)) {computerScore++}
+        let roundCheck = playRound(getComputerChoice (), getPlayerChoice ()) // was calling function several times, even though it was a conditional check, put it in a variable instead
+        if (roundCheck===true) {playerScore++}
+        if (roundCheck===false) {computerScore++}
+
         console.log(`Player:`+ playerScore)
         console.log(`Computer:`+ computerScore)
         console.log(`round `+ i)
@@ -32,42 +33,51 @@ function game (playerScore, computerScore){
        return (`Final Score Player:`+ playerScore` Computer:` + computerScore)
 }
 } //check if i is incrementing
-console.log(game())
+// console.log(game())
 
+
+//**compares computer choice and player choice**
 function playRound(computerSelection, playerSelection) {
-    computerSelection = getComputerChoice()
-    playerSelection = getPlayerChoice()
+    //  computerSelection = getComputerChoice()
+    //  playerSelection = getPlayerChoice()    XX works but need to use parameters
 
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
                     alert ('Computer: Rock | You: Scissors | YOU LOSE')
-                    return (false);
+                    return false;
                 } else if (playerSelection === 'paper'){
                     alert ('Computer: Rock | You: Paper | YOU WIN')
-                    return (true);
+                    return true;
                 }
             }  else if (computerSelection === 'paper') {
                 if (playerSelection === 'rock'){
                     alert ('Computer: Paper | You: Rock | YOU LOSE')
-                    return (false);
+                    return false;
                 } else if (playerSelection === 'scissors'){
                     alert ('Computer: Paper | You: Scissors | YOU WIN')
-                    return (true);
+                    return true;
                 }
             } else  if (computerSelection === 'scissors'){
                 if (playerSelection === 'paper'){
                     alert ('Computer: Scissors | You: Paper | YOU LOSE')
-                    return (false);
+                    return false;
                 } else if (playerSelection === 'rock'){
                     alert ('Computer: Scissors | You: Rock | YOU WIN')
-                    return (true);
+                    return true;
                 }
-            } else if (computerSelection === playerSelection) {
+            } 
+            if (computerSelection === playerSelection) {
                 alert ('YOU BOTH PICKED THE SAME | TIE') 
-                playRound()     
+                tieRound()     
             } //finally working
         }
 
+function tieRound(){
+    return true
+}
+
+
+// **Gets random input from computer**
 function getComputerChoice () {
     rand = parseInt(Math.floor (Math.random() *3));
     if (rand === 2) return 'rock';
@@ -77,6 +87,8 @@ function getComputerChoice () {
 let computerSelection = getComputerChoice()
 console.log(computerSelection)
 
+
+// **Gets input from player**
 function getPlayerChoice () {
     let choose = prompt ('Rock paper scissors')
     let chooseLower = choose.toLowerCase()
@@ -90,6 +102,9 @@ function getPlayerChoice () {
         return getPlayerChoice();
     }
   } //unga bunga code works
+
+  
+
 // let playerSelection = getPlayerChoice()
 // console.log(playerSelection)
 
