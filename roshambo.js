@@ -1,18 +1,6 @@
-/*
-write new function called game(). Call the playRound function inside 
-this one to play a 5 round game that keeps score and reports a winner
-or loser at the end.
-*/
-
-/*
-algorithm
-
-3. compare two strings and determine a winner 
-4. print out result 
-*/
 
 game(0,0)
-// is supposed to play 5 rounds of playRound()???????
+
 function game (playerScore, computerScore){
     
             
@@ -20,7 +8,7 @@ function game (playerScore, computerScore){
     //    if (i === 0){
     //     playerScore = 0
     //     computerScore = 0
-    //    }  **not needed if you define parmeters
+    //    }  #check line 2
        if (i <5){
         let roundCheck = playRound(getComputerChoice (), getPlayerChoice ()) // was calling function several times, even though it was a conditional check, put it in a variable instead
         if (roundCheck===true) {playerScore++}
@@ -28,14 +16,25 @@ function game (playerScore, computerScore){
 
         console.log(`Player:`+ playerScore)
         console.log(`Computer:`+ computerScore)
-        console.log(`round `+ i)
-       } else if (i === 5)
-       return (`Final Score Player:`+ playerScore` Computer:` + computerScore)
+        console.log(`round `+ (i +1))
+       } 
+       if (i === 4){
+       endGame (playerScore,computerScore)
 }
-} //check if i is incrementing
-// console.log(game())
+}
+}
 
-
+function endGame(playerScore,computerScore) {
+    if (playerScore > computerScore){
+        console.log('win')
+        }else if (playerScore < computerScore){
+        console.log('lose')
+        }else if (playerScore === computerScore){
+        console.log('tie')
+        }
+}
+//console.log(endGame())
+//`Final Score Player:`+ playerScore + ` Computer:` + computerScore + `YOU WIN`
 //**compares computer choice and player choice**
 function playRound(computerSelection, playerSelection) {
     //  computerSelection = getComputerChoice()
@@ -69,7 +68,7 @@ function playRound(computerSelection, playerSelection) {
             if (computerSelection === playerSelection) {
                 alert ('YOU BOTH PICKED THE SAME | TIE') 
                 tieRound()     
-            } //finally working
+            } 
         }
 
 function tieRound(){
@@ -84,8 +83,8 @@ function getComputerChoice () {
     if (rand === 1) return 'paper';
     if (rand === 0) return 'scissors';
 }
-let computerSelection = getComputerChoice()
-console.log(computerSelection)
+// let computerSelection = getComputerChoice()
+// console.log(computerSelection)
 
 
 // **Gets input from player**
