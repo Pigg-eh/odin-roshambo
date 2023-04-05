@@ -23,7 +23,7 @@ function game (playerScore, computerScore){
 }
 }
 }*/
-
+//test commit
 function endGame(playerScore,computerScore) {
     if (playerScore > computerScore){
         console.log('win')
