@@ -1,5 +1,5 @@
 
-game(0,0)
+/*game(0,0)
 
 function game (playerScore, computerScore){
     
@@ -22,7 +22,7 @@ function game (playerScore, computerScore){
        endGame (playerScore,computerScore)
 }
 }
-}
+}*/
 
 function endGame(playerScore,computerScore) {
     if (playerScore > computerScore){
@@ -33,12 +33,11 @@ function endGame(playerScore,computerScore) {
         console.log('tie')
         }
 }
-//console.log(endGame())
-//`Final Score Player:`+ playerScore + ` Computer:` + computerScore + `YOU WIN`
-//**compares computer choice and player choice**
+
+playRound(getComputerChoice (), getPlayerChoice ())  //delete later
+
 function playRound(computerSelection, playerSelection) {
-    //  computerSelection = getComputerChoice()
-    //  playerSelection = getPlayerChoice()    XX works but need to use parameters
+    
 
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
@@ -76,18 +75,16 @@ function tieRound(){
 }
 
 
-// **Gets random input from computer**
+
 function getComputerChoice () {
     rand = parseInt(Math.floor (Math.random() *3));
     if (rand === 2) return 'rock';
     if (rand === 1) return 'paper';
     if (rand === 0) return 'scissors';
 }
-// let computerSelection = getComputerChoice()
-// console.log(computerSelection)
 
 
-// **Gets input from player**
+
 function getPlayerChoice () {
     let choose = prompt ('Rock paper scissors')
     let chooseLower = choose.toLowerCase()
@@ -104,8 +101,6 @@ function getPlayerChoice () {
 
   
 
-// let playerSelection = getPlayerChoice()
-// console.log(playerSelection)
 
 
 
@@ -117,8 +112,6 @@ function getPlayerChoice () {
 
 
 
-// let resulto = playRound(computerSelection, playerSelection)
-// alert (`Computer picked ` + computerSelection + `. You picked ` + playerSelection+ `. It is a ` + resulto)
 
 
 
