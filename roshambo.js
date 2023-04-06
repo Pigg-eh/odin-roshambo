@@ -1,3 +1,16 @@
+const rock = document.querySelector('button.rock');
+rock.addEventListener('click', playRound(getComputerChoice (), 'rock'));
+
+const paper = document.querySelector('button.paper');
+paper.addEventListener('click', playRound(getComputerChoice (), 'paper'));
+
+const scissors = document.querySelector('button.scissors');
+scissors.addEventListener('click', playRound(getComputerChoice (), 'scissors'));
+
+//add eventlistener to each button
+//buttons call playround with correct playerselection 
+
+
 
 /*game(0,0)
 
@@ -34,7 +47,7 @@ function endGame(playerScore,computerScore) {
         }
 }
 
-playRound(getComputerChoice (), getPlayerChoice ())  //delete later
+//playRound(getComputerChoice (), getPlayerChoice ())  //delete later
 
 function playRound(computerSelection, playerSelection) {
     
@@ -86,7 +99,7 @@ function getComputerChoice () {
 
 
 function getPlayerChoice () {
-    let choose = prompt ('Rock paper scissors')
+   /* let choose = prompt ('Rock paper scissors')
     let chooseLower = choose.toLowerCase()
     if (chooseLower === 'rock') {
         return 'rock'
@@ -96,7 +109,7 @@ function getPlayerChoice () {
         return 'scissors'
     } else {
         return getPlayerChoice();
-    }
+    } */
   } //unga bunga code works
 
   
