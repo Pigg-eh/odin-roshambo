@@ -1,11 +1,12 @@
+
+
 const buttons = document.querySelectorAll('button')
 
 buttons.forEach((button) => {
-    button.addEventListener('click', playRound(getComputerChoice(),
-    getPlayerChoice(e)))//find way to insert word into getplayerchoice
-})
-
-//test to see if fetch works
+    button.addEventListener('click', function(e) {
+      playRound(getComputerChoice(), e.target.innerText)
+    });
+  }); 
 
 
 /*game(0,0)
