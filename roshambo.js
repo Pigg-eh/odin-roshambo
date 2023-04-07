@@ -5,6 +5,7 @@ buttons.forEach((button) => {
     getPlayerChoice(e)))//find way to insert word into getplayerchoice
 })
 
+//test to see if fetch works
 
 
 /*game(0,0)
