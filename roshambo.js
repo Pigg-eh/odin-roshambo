@@ -1,14 +1,24 @@
+playerChoose();
 
-
+function playerChoose () {
 const buttons = document.querySelectorAll('button')
 
 buttons.forEach((button) => {
     button.addEventListener('click', function(e) {
       playRound(getComputerChoice(), e.target.innerText)
+      //return somethign to add it to addDiv (rename that shit too )
     });
   }); 
+}
 
+function addDiv() {
+    const body = document.querySelector('body')
+    const div = document.createElement('div')
+    body.appendChild(div)
+    div.textContent ()
+}
 
+  
 /*game(0,0)
 
 function game (playerScore, computerScore){
