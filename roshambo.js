@@ -1,4 +1,18 @@
+selectNode ();
 playerChoose();
+
+function selectNode () {
+    Element.querySelector(body)
+    const choices = [rock, paper, scissors]
+    choices.forEach((choice) => {
+        choice = document.createElement(button)
+    });
+    createNode ()
+}
+
+function createNode () {
+    
+}
 
 function playerChoose () {
 const buttons = document.querySelectorAll('button')
@@ -47,6 +61,7 @@ function game (playerScore, computerScore){
 }
 }*/
 //test commit
+
 function endGame(playerScore,computerScore) {
     if (playerScore > computerScore){
         console.log('win')
