@@ -5,18 +5,21 @@ const buttons = document.querySelectorAll('button')
 
 buttons.forEach((button) => {
     button.addEventListener('click', function(e) {
-      playRound(getComputerChoice(), e.target.innerText)
-      //return somethign to add it to addDiv (rename that shit too )
-    });
+      return playRound(getComputerChoice(), e.target.innerText)
+      
+      //return somethign to add it to addDiv (rename that  too )
+    }); 
   }); 
 }
 
 function addDiv() {
     const body = document.querySelector('body')
     const div = document.createElement('div')
+    let scoreBoard = []
     body.appendChild(div)
+    div.textContent = scoreBoard
     div.textContent ()
-}
+} //  print a table as we go : table.insertRow();
 
   
 /*game(0,0)
@@ -30,7 +33,7 @@ function game (playerScore, computerScore){
     //     computerScore = 0
     //    }  #check line 2
        if (i <5){
-        let roundCheck = playRound(getComputerChoice (), getPlayerChoice ()) // was calling function several times, even though it was a conditional check, put it in a variable instead
+        let roundCheck = playRound(getComputerChoice (), getPlayerChoice ()) //zxc was calling function several times, even though it was a conditional check, put it in a variable instead
         if (roundCheck===true) {playerScore++}
         if (roundCheck===false) {computerScore++}
 
