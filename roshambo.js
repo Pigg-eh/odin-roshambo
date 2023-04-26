@@ -6,11 +6,13 @@ function selectNode () {
     const choices = [rock, paper, scissors]
     choices.forEach((choice) => {
         choice = document.createElement(button)
+        
     });
     createNode ()
 }
 
 function createNode () {
+    const container = document.querySelector('#container');
     
 }
 
