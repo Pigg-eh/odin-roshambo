@@ -1,20 +1,17 @@
 selectNode ();
 playerChoose();
 
-function selectNode () {
-    Element.querySelector(body)
-    const choices = [rock, paper, scissors]
-    choices.forEach((choice) => {
-        choice = document.createElement(button)
-        
-    });
-    createNode ()
+function appendNode () {
+    const container = document.querySelector('#container');
+    const buttons = ['rock', 'paper', 'scissors'] 
+    buttons.forEach (addClass)
 }
 
-function createNode () {
-    const container = document.querySelector('#container');
-    
-}
+function addClass () {
+    document.createElement('button')
+    content.textContent.add()
+}//wtf am i doing
+
 
 function playerChoose () {
 const buttons = document.querySelectorAll('button')
