@@ -1,16 +1,20 @@
-selectNode ();
-playerChoose();
+ holder () 
 
-function appendNode () {
-    const container = document.querySelector('#container');
-    const buttons = ['rock', 'paper', 'scissors'] 
-    buttons.forEach (addClass)
-}
 
-function addClass () {
-    document.createElement('button')
-    content.textContent.add()
-}//wtf am i doing
+function makeButtons(c) {
+    for (var i = 0; i < c.length; i++) {
+      $('.button-holder').append('<button value=' + c[i] + '>' + c[i] +
+        '</button>');
+    }
+  }
+
+  function holder () {
+    const body = document.body
+    const scoreboard = document.createElement('div')
+    body.append(scoreboard)
+    scoreboard.textContent = 'Salutations Earth'
+  } 
+
 
 
 function playerChoose () {
