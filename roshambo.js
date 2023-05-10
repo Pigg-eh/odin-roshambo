@@ -1,18 +1,30 @@
- holder () 
+appendElements () 
 
 
-function makeButtons(c) {
-    for (var i = 0; i < c.length; i++) {
-      $('.button-holder').append('<button value=' + c[i] + '>' + c[i] +
-        '</button>');
-    }
-  }
-
-  function holder () {
+  function appendElements () {
     const body = document.body
-    const scoreboard = document.createElement('div')
-    body.append(scoreboard)
-    scoreboard.textContent = 'Salutations Earth'
+    const div = document.createElement('div')
+    body.append(div)
+    div.setAttribute('style','margin-bottom:20px') 
+    
+    const rock = document.createElement ('button')
+    const paper = document.createElement ('button')
+    const scissors = document.createElement ('button')
+    body.append(rock)
+    body.append(paper)
+    body.append(scissors)
+
+    div.textContent = 'Salutations Earth'
+    rock.textContent = 'rock'
+    paper.textContent= 'paper'
+    scissors.textContent= 'scissors'
+    
+    const scoreboard= document.createElement ('div')
+    div.appendChild(scoreboard)
+
+    //add event listener to connect button to playerChoose
+    //add new function for this so functions are more simple
+    //
   } 
 
 
@@ -29,26 +41,12 @@ buttons.forEach((button) => {
   }); 
 }
 
-function addDiv() {
-    const body = document.querySelector('body')
-    const div = document.createElement('div')
-    let scoreBoard = []
-    body.appendChild(div)
-    div.textContent = scoreBoard
-    div.textContent ()
-} //  print a table as we go : table.insertRow();
-
   
-/*game(0,0)
+game(0,0)
 
 function game (playerScore, computerScore){
-    
-            
-    for (let i = 0; i < 5; i++){
-    //    if (i === 0){
-    //     playerScore = 0
-    //     computerScore = 0
-    //    }  #check line 2
+     
+    for (let i = 0; i < 5; i++){ 
        if (i <5){
         let roundCheck = playRound(getComputerChoice (), getPlayerChoice ()) //zxc was calling function several times, even though it was a conditional check, put it in a variable instead
         if (roundCheck===true) {playerScore++}
@@ -62,7 +60,7 @@ function game (playerScore, computerScore){
        endGame (playerScore,computerScore)
 }
 }
-}*/
+}
 //test commit
 
 function endGame(playerScore,computerScore) {
