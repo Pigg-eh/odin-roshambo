@@ -27,7 +27,7 @@ appendElements ()
 
     const scoreboard= document.createElement ('div')
     div.appendChild(scoreboard)
-     game()
+     getPlayerChoice()
   } 
 
 
@@ -36,9 +36,9 @@ function getPlayerChoice () {
 
     buttons.forEach((button)=>{
         button.addEventListener ('click', (e) => {
-        return (e.target.innerText);
+        return playRound((e.target.innerText),getComputerChoice());
     })
-    // by the gods it worked
+    // by the gods it worked... BY THE GODS ITS WORKING
         
 });
 }
@@ -50,7 +50,7 @@ function game (playerScore, computerScore){
      
     for (let i = 0; i < 5; i++){ 
         if (i < 5){
-            let roundCheck = playRound() 
+            let roundCheck = playRound(getPlayerChoice, getComputerChoice) 
             if (roundCheck===true) {playerScore++}
             if (roundCheck===false) {computerScore++}
         
@@ -76,9 +76,9 @@ function endGame(playerScore,computerScore) {
 
 
 
-function playRound(computerSelection, playerSelection) {
+function playRound(playerSelection, computerSelection) {
     
-
+    
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
                     alert ('Computer: Rock | You: Scissors | YOU LOSE')
