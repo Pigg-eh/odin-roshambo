@@ -27,19 +27,21 @@ appendElements ()
 
     const scoreboard= document.createElement ('div')
     div.appendChild(scoreboard)
-     getPlayerChoice()
+     game()
   } 
 
 
 function getPlayerChoice () {
     let buttons = document.querySelectorAll('button')
-    for (i=0; i< buttons.length; i++){
-        buttons[i].addEventListener ('click', (e) => {
-        console.log(e.target.value);
-            });
-    // find out more about how (e) works
-        }
-};
+
+    buttons.forEach((button)=>{
+        button.addEventListener ('click', (e) => {
+        return (e.target.innerText);
+    })
+    // by the gods it worked
+        
+});
+}
 
   
 
@@ -107,6 +109,7 @@ function playRound(computerSelection, playerSelection) {
                 tieRound()     
             } 
         }
+//may need to edit playRound
 
 function tieRound(){
     return true
@@ -123,19 +126,6 @@ function getComputerChoice () {
 
 
 
-// function getPlayerChoice () {
-//    let choose = prompt ('Rock paper scissors')
-//     let chooseLower = choose.toLowerCase()
-//     if (chooseLower === 'rock') {
-//         return 'rock'
-//     } else if (chooseLower === 'paper') {
-//         return 'paper'
-//     } else if (chooseLower === 'scissors'){
-//         return 'scissors'
-//     } else {
-//         return getPlayerChoice();
-//     }
-//  } //unga bunga code works
 
   
 
