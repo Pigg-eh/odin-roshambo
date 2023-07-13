@@ -1,5 +1,5 @@
 appendElements () 
-
+scoreboard ()
 
   function appendElements () {
     const body = document.body
@@ -25,11 +25,20 @@ appendElements ()
     body.appendChild(paper)
     body.appendChild(scissors)
 
-    const scoreboard= document.createElement ('div')
-    div.appendChild(scoreboard)
+    
+
      getPlayerChoice()
   } 
 
+  function scoreboard () {
+    const table = document.createElement ('table')
+    let scoreboard= document.querySelector ('div')
+    scoreboard.append (table)
+    
+    
+    
+    
+  }
 
 function getPlayerChoice () {
     let buttons = document.querySelectorAll('button')
@@ -39,7 +48,7 @@ function getPlayerChoice () {
         return playRound((e.target.innerText),getComputerChoice());
     })
     // by the gods it worked... BY THE GODS ITS WORKING
-        
+    // worked because I was able to get the string value using (e.target.innerText)  
 });
 }
 
