@@ -4,7 +4,9 @@ scoreboard ()
   function appendElements () {
     const body = document.body
     const div = document.createElement('div')
+    const div2 = document.createElement('div')
     body.append(div)
+    body.append(div2)
     div.setAttribute('style','margin-bottom:20px') 
     
 
@@ -12,31 +14,34 @@ scoreboard ()
     const paper = document.createElement ('button')
     const scissors = document.createElement ('button')
 
-    rock.classList.add ('rock')
-    paper.classList.add ('paper')
-    scissors.classList.add ('scissors')
 
-    div.textContent = 'Salutations Earth'
+    div.textContent = 'Roshambo Earth'
     rock.textContent = 'rock'
     paper.textContent= 'paper'
     scissors.textContent= 'scissors'
 
-    body.appendChild(rock)
-    body.appendChild(paper)
-    body.appendChild(scissors)
+    div2.append(rock)
+    div2.appendChild(paper)
+    div2.appendChild(scissors)
 
     
 
      getPlayerChoice()
   } 
 
+  
+
+  //setTimeout(function(){scoreboard()}, 2500) // worth understanding cb func
+
   function scoreboard () {
-    const table = document.createElement ('table')
     let scoreboard= document.querySelector ('div')
-    scoreboard.append (table)
+    const player = document.createElement('div')
+    const computer = document.createElement('div')
+    scoreboard.appendChild(player)
+    scoreboard.appendChild(computer)
     
-    
-    
+    player.textContent = 'player'
+    computer.textContent = 'comp'
     
   }
 
@@ -47,8 +52,8 @@ function getPlayerChoice () {
         button.addEventListener ('click', (e) => {
         return playRound((e.target.innerText),getComputerChoice());
     })
-    // by the gods it worked... BY THE GODS ITS WORKING
-    // worked because I was able to get the string value using (e.target.innerText)  
+    
+    // works because I was able to get the string value using (e.target.innerText)  
 });
 }
 
@@ -70,7 +75,7 @@ function game (playerScore, computerScore){
        endGame (playerScore,computerScore)
 }
 }
-} //EDITING THIS FUNCTION IT IS RUNNING RANDOMLY
+} //EDIT THIS FUNCTION IT IS RUNNING RANDOMLY
 
 function endGame(playerScore,computerScore) {
     if (playerScore > computerScore){
