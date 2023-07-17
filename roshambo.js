@@ -1,5 +1,5 @@
 appendElements () 
-scoreboard (0, 0, 'To be Determined', 'Funny words will go here')
+scoreboard ()
 
   function appendElements () {
     const body = document.body
@@ -33,27 +33,57 @@ scoreboard (0, 0, 'To be Determined', 'Funny words will go here')
 
   //setTimeout(function(){scoreboard()}, 2500) // worth understanding cb func
 
-  function scoreboard (pText, cText, sitchText, flavorText) {
+  function scoreboard () {
     let scoreboard= document.querySelector ('div')
     const player = document.createElement('div')
     const computer = document.createElement('div')
     const sitch = document.createElement('div')
     const flavor = document.createElement('div')
+    const results = document.createElement('div')
+    
     scoreboard.appendChild(player)
     scoreboard.appendChild(computer)
     scoreboard.appendChild(sitch)
     scoreboard.appendChild(flavor)
+    scoreboard.appendChild(results)
+
+    player.classList.add ('player')
+    computer.classList.add ('computer')
+    sitch.classList.add ('sitch')
+    flavor.classList.add ('flavor')
+    results.classList.add ('results')
+
+    player.textContent = 'Player Selection: '
+    computer.textContent = 'Computer Selection: '
+    sitch.textContent = 'Begin by pressing the button'
+    flavor.textContent = 'Things must be done'
+    results.textContent = '0 - 0'
+
+  }
+
+  function battle (pText, cText, sitchText, flavorText){
+    
+    let player = document.querySelector('div.player')
+    let computer = document.querySelector('div.computer')
+    let sitch = document.querySelector('div.sitch')
+    let flavor = document.querySelector('div.flavor')
+    
 
     player.textContent = 'Player Selection: ' + pText
     computer.textContent = 'Computer Selection: '  + cText
     sitch.textContent = sitchText
     flavor.textContent = flavorText
+    
+  }
 
+  function scoreTotal (player, computer) {
+    let results = document.querySelector('div.results')
+    results.textContent = `Player: ` + player + ` - ` `Computer: ` + computer
   }
 
   function playRound(playerSelection, computerSelection) {
-    // PLAN:find out how to clear the DOM stuff as it keeps stacking
-    
+    // PLAN:Find out how to clear the DOM stuff as it keeps stacking
+    // was able so solbe problem by using query selectors in other functions and adding classes to better target things
     
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
@@ -92,15 +122,9 @@ scoreboard (0, 0, 'To be Determined', 'Funny words will go here')
                 tieRound()     
             } 
         }
-//may need to edit playRound
 
     function tieRound(){
         return true
-    }
-
-    function battle (pSelect, cSelect, victor, flavor) {
-        
-        scoreboard (pSelect, cSelect, victor, flavor)
     }
 
     function game (playerScore, computerScore){
