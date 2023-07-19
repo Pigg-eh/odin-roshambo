@@ -1,6 +1,6 @@
 appendElements () 
 scoreboard ()
-
+// redo game()
   function appendElements () {
     const body = document.body
     const div = document.createElement('div')
@@ -25,8 +25,8 @@ scoreboard ()
     div2.appendChild(scissors)
 
     
-
-     getPlayerChoice()
+     //getPlayerChoice()
+     game(0, 0)
   } 
 
   
@@ -79,7 +79,7 @@ scoreboard ()
   function scoreTotal (player, computer) {
     let results = document.querySelector('div.results')
     results.textContent = `Player: ` + player + ` - ` `Computer: ` + computer
-  }
+  } // to display score
 
   function playRound(playerSelection, computerSelection) {
     // PLAN:Find out how to clear the DOM stuff as it keeps stacking
@@ -87,37 +87,37 @@ scoreboard ()
     
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
-                    //alert ('Computer: Rock | You: Scissors | YOU LOSE')
+                  
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'Try as you might the scissors snaps in two')
                     return false;
                 } else if (playerSelection === 'paper'){
-                    //alert ('Computer: Rock | You: Paper | YOU WIN')
+                  
                     battle (playerSelection, computerSelection, 'YOU WIN', 'Paper hugs rock, love wins')
                     return true;
                 }
             }  else if (computerSelection === 'paper') {
                 if (playerSelection === 'rock'){
-                    //alert ('Computer: Paper | You: Rock | YOU LOSE')
+                   
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'ROCK NO LIKE PERSONAL SPACE INVADED, ROCK NO COMFORTABLE') 
                     return false;
                 } else if (playerSelection === 'scissors'){
-                    //alert ('Computer: Paper | You: Scissors | YOU WIN')
+                   
                     battle (playerSelection, computerSelection, 'YOU WIN', 'Cutting is fun')
                     return true;
                 }
             } else  if (computerSelection === 'scissors'){
                 if (playerSelection === 'paper'){
-                    //alert ('Computer: Scissors | You: Paper | YOU LOSE')
+                  
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'Who knew, scissors can cut through paper')
                     return false;
                 } else if (playerSelection === 'rock'){
-                    //alert ('Computer: Scissors | You: Rock | YOU WIN')
+                   
                     battle (playerSelection, computerSelection, 'YOU WIN', 'ROCK SMASH')
                     return true;
                 }
             } 
             if (computerSelection === playerSelection) {
-                //alert ('YOU BOTH PICKED THE SAME | TIE') 
+               
                 battle (playerSelection, computerSelection, 'It\'s a tie.', 'How awkward, ah well lets try again')
                 tieRound()     
             } 
@@ -128,16 +128,18 @@ scoreboard ()
     }
 
     function game (playerScore, computerScore){
-        //game logic needs to be worked on 
+        //PROBLEM: Game function keeps running and not waiting for the other two functions to finish
+
         for (let i = 0; i < 5; i++){ 
             if (i < 5){
-                let roundCheck = playRound(getPlayerChoice, getComputerChoice) 
+                playRound (getPlayerChoice(), getComputerChoice())
+                let roundCheck = (getPlayerChoice > getComputerChoice) 
                 if (roundCheck===true) {playerScore++}
                 if (roundCheck===false) {computerScore++}
             
-                console.log(`round `+ (i +1))
-        }else if (i === 5){
-        endGame (playerScore,computerScore)
+                    console.log(`round `+ (i +1))
+            }else if (i === 5){
+            endGame (playerScore,computerScore)
     }
     } //the logic of this is still flawed
     } 
@@ -157,11 +159,13 @@ scoreboard ()
 
 
     function getPlayerChoice () {
+        //PROBLEM: not getting string value, just loops through buttons
         let buttons = document.querySelectorAll('button')
-
+    
         buttons.forEach((button)=>{
             button.addEventListener ('click', (e) => {
             return playRound((e.target.innerText),getComputerChoice());
+            //return (e.target.innerText);
         })
         
         // works because I was able to get the string value using (e.target.innerText)  
