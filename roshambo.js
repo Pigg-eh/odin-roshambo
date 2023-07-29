@@ -1,6 +1,10 @@
+let pointsPlayer 
+let pointsComputer
+let roundss
+
 appendElements () 
 scoreboard ()
-// redo game()
+
   function appendElements () {
     const body = document.body
     const div = document.createElement('div')
@@ -20,13 +24,10 @@ scoreboard ()
     paper.textContent= 'paper'
     scissors.textContent= 'scissors'
 
+
     div2.append(rock)
     div2.appendChild(paper)
     div2.appendChild(scissors)
-
-    
-     //getPlayerChoice()
-     game(0, 0)
   } 
 
   
@@ -34,6 +35,7 @@ scoreboard ()
   //setTimeout(function(){scoreboard()}, 2500) // worth understanding cb func
 
   function scoreboard () {
+    
     let scoreboard= document.querySelector ('div')
     const player = document.createElement('div')
     const computer = document.createElement('div')
@@ -58,61 +60,84 @@ scoreboard ()
     sitch.textContent = 'Begin by pressing the button'
     flavor.textContent = 'Things must be done'
     results.textContent = '0 - 0'
+    roundss = 0
+    game(0, 0, roundss)
 
+    //i suspect its not getting called in every iteration
   }
 
-  function battle (pText, cText, sitchText, flavorText){
+  function battle (pText, cText, sitchText, flavorText, ){
     
     let player = document.querySelector('div.player')
     let computer = document.querySelector('div.computer')
     let sitch = document.querySelector('div.sitch')
     let flavor = document.querySelector('div.flavor')
     
-
+    
     player.textContent = 'Player Selection: ' + pText
     computer.textContent = 'Computer Selection: '  + cText
     sitch.textContent = sitchText
     flavor.textContent = flavorText
-    
+
   }
 
-  function scoreTotal (player, computer) {
+  function scoreTotal(player, computer, round) {
     let results = document.querySelector('div.results')
-    results.textContent = `Player: ` + player + ` - ` `Computer: ` + computer
-  } // to display score
+    results.textContent = `Player: ${player} - Computer: ${computer}`
+    console.log(`Roundo: ${round}`)
+    roundss ++
+    game(player, computer, roundss)
+  } 
+
+
 
   function playRound(playerSelection, computerSelection) {
     // PLAN:Find out how to clear the DOM stuff as it keeps stacking
-    // was able so solbe problem by using query selectors in other functions and adding classes to better target things
+    // was able so solve problem by using query selectors in other functions and adding classes to better target things
     
+            //Arrayify me
+            //[0 1 2]
+            //[1 2 0]
+            //[2 1 0]
+            
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
                   
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'Try as you might the scissors snaps in two')
+                    pointsComputer ++
                     return false;
+                    
                 } else if (playerSelection === 'paper'){
                   
                     battle (playerSelection, computerSelection, 'YOU WIN', 'Paper hugs rock, love wins')
+                    pointsPlayer ++
                     return true;
+
                 }
             }  else if (computerSelection === 'paper') {
                 if (playerSelection === 'rock'){
                    
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'ROCK NO LIKE PERSONAL SPACE INVADED, ROCK NO COMFORTABLE') 
+                    pointsComputer ++
                     return false;
+                    
                 } else if (playerSelection === 'scissors'){
                    
-                    battle (playerSelection, computerSelection, 'YOU WIN', 'Cutting is fun')
+                    battle (playerSelection, computerSelection, 'YOU WIN', 'Cutting is fun', true)
+                    pointsPlayer ++
                     return true;
                 }
             } else  if (computerSelection === 'scissors'){
                 if (playerSelection === 'paper'){
                   
                     battle (playerSelection, computerSelection, 'YOU LOSE', 'Who knew, scissors can cut through paper')
+                    pointsComputer ++
                     return false;
+
                 } else if (playerSelection === 'rock'){
                    
-                    battle (playerSelection, computerSelection, 'YOU WIN', 'ROCK SMASH')
+                    battle (playerSelection, computerSelection, 'YOU WIN', 'ROCK SMASH SILLY TOOL')
+                    pointsPlayer ++
                     return true;
                 }
             } 
@@ -121,30 +146,44 @@ scoreboard ()
                 battle (playerSelection, computerSelection, 'It\'s a tie.', 'How awkward, ah well lets try again')
                 tieRound()     
             } 
-        }
+
+            scoreTotal(pointsPlayer, pointsComputer, roundss)
+    }
 
     function tieRound(){
+        //maybe make this a variable?
         return true
-    }
+        }
 
-    function game (playerScore, computerScore){
-        //PROBLEM: Game function keeps running and not waiting for the other two functions to finish
+    function game(playerScore, computerScore, rounds){
+        /*PROBLEM:
+        -arguments keep incrementing at seemingly random
+        -endgame wont play
+        
+        WHAT DO:
+        []play till someone reaches 5
+        [X]keep score of playerScore and computerScore
+        display it on the dom 
+        */
 
-        for (let i = 0; i < 5; i++){ 
-            if (i < 5){
-                playRound (getPlayerChoice(), getComputerChoice())
-                let roundCheck = (getPlayerChoice > getComputerChoice) 
-                if (roundCheck===true) {playerScore++}
-                if (roundCheck===false) {computerScore++}
-            
-                    console.log(`round `+ (i +1))
-            }else if (i === 5){
-            endGame (playerScore,computerScore)
-    }
-    } //the logic of this is still flawed
+
+        if (rounds === 0){
+            pointsPlayer = 0
+            pointsComputer = 0
+        }
+        if (playerScore < 5 || computerScore < 5){
+            getPlayerChoice()
+        }else if (playerScore === 5){
+            endGame(playerScore, computerScore)
+        }else if (computerScore === 5) {
+            endGame(playerScore, computerScore)
+        }
+
+        
+
     } 
 
-    function endGame(playerScore,computerScore) {
+    function endGame(playerScore, computerScore) {
         if (playerScore > computerScore){
             console.log('win')
             }else if (playerScore < computerScore){
@@ -155,21 +194,20 @@ scoreboard ()
         
     } 
 
-
-
-
     function getPlayerChoice () {
         //PROBLEM: not getting string value, just loops through buttons
-        let buttons = document.querySelectorAll('button')
-    
-        buttons.forEach((button)=>{
-            button.addEventListener ('click', (e) => {
-            return playRound((e.target.innerText),getComputerChoice());
-            //return (e.target.innerText);
-        })
-        
         // works because I was able to get the string value using (e.target.innerText)  
+        //PROBLEM: not waiting for click
+        const buttons = document.querySelectorAll('button')
+        buttons.forEach((button)=>{
+            button.addEventListener ('click',  (e) => {
+            
+            return playRound(e.target.innerText, getComputerChoice())
+      
+        })
     });
+
+      
     }
 
     function getComputerChoice () {
@@ -177,12 +215,17 @@ scoreboard ()
         if (rand === 2) return 'rock';
         if (rand === 1) return 'paper';
         if (rand === 0) return 'scissors';
+        
     }
 
 
 /*  
+Reminders:
+clear out notes in final version these are just for me when learning
+
 LEARNINGS
-- something must be done with a function in order for code to run 
+- something must be done with a function in order for code to run?
 - if else statements have to be specific if there are layers
 - you can pass values via parameters 
 */ 
+ 
