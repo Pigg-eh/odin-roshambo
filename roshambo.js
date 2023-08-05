@@ -1,6 +1,6 @@
 let pointsPlayer 
 let pointsComputer
-let roundss
+let rounds
 
 appendElements () 
 scoreboard ()
@@ -28,6 +28,8 @@ scoreboard ()
     div2.append(rock)
     div2.appendChild(paper)
     div2.appendChild(scissors)
+    div2.classList.add ('btnDiv')
+
   } 
 
   
@@ -60,8 +62,8 @@ scoreboard ()
     sitch.textContent = 'Begin by pressing the button'
     flavor.textContent = 'Things must be done'
     results.textContent = '0 - 0'
-    roundss = 0
-    game(0, 0, roundss)
+    rounds = 0
+    game()
 
     //i suspect its not getting called in every iteration
   }
@@ -81,12 +83,12 @@ scoreboard ()
 
   }
 
-  function scoreTotal(player, computer, round) {
+  function scoreTotal() {
     let results = document.querySelector('div.results')
-    results.textContent = `Player: ${player} - Computer: ${computer}`
-    console.log(`Roundo: ${round}`)
-    roundss ++
-    game(player, computer, roundss)
+    results.textContent = `Player: ${pointsPlayer} - Computer: ${pointsComputer}`
+    console.log(`Roundo: ${rounds}`)
+    rounds ++
+    game()
   } 
 
 
@@ -147,7 +149,7 @@ scoreboard ()
                 tieRound()     
             } 
 
-            scoreTotal(pointsPlayer, pointsComputer, roundss)
+            scoreTotal(pointsPlayer, pointsComputer, rounds)
     }
 
     function tieRound(){
@@ -155,7 +157,7 @@ scoreboard ()
         return true
         }
 
-    function game(playerScore, computerScore, rounds){
+    function game(){
         /*PROBLEM:
         -arguments keep incrementing at seemingly random
         -endgame wont play
@@ -171,12 +173,12 @@ scoreboard ()
             pointsPlayer = 0
             pointsComputer = 0
         }
-        if (playerScore < 5 || computerScore < 5){
-            getPlayerChoice()
-        }else if (playerScore === 5){
-            endGame(playerScore, computerScore)
-        }else if (computerScore === 5) {
-            endGame(playerScore, computerScore)
+        if (pointsPlayer < 5 || pointsComputer < 5){
+            playRound(getPlayerChoice(), getComputerChoice())
+        }else if (pointsPlayer === 5){
+            endGame(pointsPlayer, pointsComputer)
+        }else if (pointsComputer === 5) {
+            endGame(pointsPlayer, pointsComputer)
         }
 
         
@@ -193,19 +195,19 @@ scoreboard ()
             }
         
     } 
-
-    function getPlayerChoice () {
+    
+     function getPlayerChoice () {
         //PROBLEM: not getting string value, just loops through buttons
         // works because I was able to get the string value using (e.target.innerText)  
-        //PROBLEM: not waiting for click
-        const buttons = document.querySelectorAll('button')
-        buttons.forEach((button)=>{
-            button.addEventListener ('click',  (e) => {
+        //PROBLEM: not waiting for click == async functions and promises
+        const buttons = document.querySelector('div.btnDiv')
+        
+            buttons.addEventListener ('click',  (e) => {
             
-            return playRound(e.target.innerText, getComputerChoice())
+            return e.target.innerText
       
         })
-    });
+    //works the same as before due to bubbling, may have to differentiate div and button clicks 
 
       
     }
@@ -221,6 +223,8 @@ scoreboard ()
 
 /*  
 Reminders:
+current save has max call stack error, need to figure out async functions and promises
+
 clear out notes in final version these are just for me when learning
 
 LEARNINGS
