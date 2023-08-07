@@ -1,6 +1,6 @@
-let pointsPlayer 
-let pointsComputer
-let rounds
+let pointsPlayer = 0 
+let pointsComputer = 0
+let rounds = 0
 
 appendElements () 
 scoreboard ()
@@ -33,9 +33,6 @@ scoreboard ()
   } 
 
   
-
-  //setTimeout(function(){scoreboard()}, 2500) // worth understanding cb func
-
   function scoreboard () {
     
     let scoreboard= document.querySelector ('div')
@@ -62,8 +59,6 @@ scoreboard ()
     sitch.textContent = 'Begin by pressing the button'
     flavor.textContent = 'Things must be done'
     results.textContent = '0 - 0'
-    rounds = 0
-    game()
 
     //i suspect its not getting called in every iteration
   }
@@ -88,7 +83,6 @@ scoreboard ()
     results.textContent = `Player: ${pointsPlayer} - Computer: ${pointsComputer}`
     console.log(`Roundo: ${rounds}`)
     rounds ++
-    game()
   } 
 
 
@@ -166,19 +160,14 @@ scoreboard ()
         []play till someone reaches 5
         [X]keep score of playerScore and computerScore
         display it on the dom 
-        */
+        */        
 
-
-        if (rounds === 0){
-            pointsPlayer = 0
-            pointsComputer = 0
-        }
-        if (pointsPlayer < 5 || pointsComputer < 5){
-            playRound(getPlayerChoice(), getComputerChoice())
-        }else if (pointsPlayer === 5){
+        if (pointsPlayer === 5){
             endGame(pointsPlayer, pointsComputer)
         }else if (pointsComputer === 5) {
             endGame(pointsPlayer, pointsComputer)
+        }else{
+            playRound(getPlayerChoice)
         }
 
         
@@ -204,7 +193,9 @@ scoreboard ()
         
             buttons.addEventListener ('click',  (e) => {
             
-            return e.target.innerText
+            
+            playRound(e.target.innerText, getComputerChoice())
+            
       
         })
     //works the same as before due to bubbling, may have to differentiate div and button clicks 
@@ -226,6 +217,13 @@ Reminders:
 current save has max call stack error, need to figure out async functions and promises
 
 clear out notes in final version these are just for me when learning
+
+Problem Scope:
+Get input
+check 5 rounds
+get cpu input
+compare inputs
+display results
 
 LEARNINGS
 - something must be done with a function in order for code to run?
