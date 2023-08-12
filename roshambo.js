@@ -57,11 +57,11 @@ getPlayerChoice()
     results.classList.add ('results')
     rounds.classList.add ('rounds')
 
-    player.textContent = 'Player Selection: '
-    computer.textContent = 'Computer Selection: '
+    player.textContent = 'Player: '
+    computer.textContent = 'Computer: '
     sitch.textContent = 'Begin by pressing the button'
     flavor.textContent = 'Things must be done'
-    results.textContent = '0 - 0'
+    results.textContent = 'Player: 0 - Computer: 0'
     rounds.textContent = `Round: 0`
 
     //i suspect its not getting called in every iteration
@@ -75,8 +75,8 @@ getPlayerChoice()
     let flavor = document.querySelector('div.flavor')
     
     
-    player.textContent = 'Player Selection: ' + pText
-    computer.textContent = 'Computer Selection: '  + cText
+    player.textContent = 'Player: ' + pText
+    computer.textContent = 'Computer: '  + cText
     sitch.textContent = sitchText
     flavor.textContent = flavorText
 
@@ -171,13 +171,11 @@ getPlayerChoice()
 
     function endGame(playerScore, computerScore) {
         if (playerScore > computerScore){
-            battle ('Player: Win', "Computer: Lose")
+            battle ('Win', "Lose")
             //console.log('win')
             }else if (playerScore < computerScore){
-            battle ('Player: Win', "Computer: Lose")
+            battle ('Lose', "Win")
             //console.log('lose')
-            }else if (playerScore === computerScore){
-            console.log('tie')
             }
         
     } 
