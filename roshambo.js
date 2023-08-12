@@ -1,10 +1,10 @@
 let pointsPlayer = 0 
 let pointsComputer = 0
-let rounds = 0
+let rounds = 1
 
 appendElements () 
 scoreboard ()
-
+getPlayerChoice()
   function appendElements () {
     const body = document.body
     const div = document.createElement('div')
@@ -41,24 +41,28 @@ scoreboard ()
     const sitch = document.createElement('div')
     const flavor = document.createElement('div')
     const results = document.createElement('div')
+    const rounds = document.createElement ('div')
     
     scoreboard.appendChild(player)
     scoreboard.appendChild(computer)
     scoreboard.appendChild(sitch)
     scoreboard.appendChild(flavor)
     scoreboard.appendChild(results)
+    scoreboard.appendChild(rounds)
 
     player.classList.add ('player')
     computer.classList.add ('computer')
     sitch.classList.add ('sitch')
     flavor.classList.add ('flavor')
     results.classList.add ('results')
+    rounds.classList.add ('rounds')
 
     player.textContent = 'Player Selection: '
     computer.textContent = 'Computer Selection: '
     sitch.textContent = 'Begin by pressing the button'
     flavor.textContent = 'Things must be done'
     results.textContent = '0 - 0'
+    rounds.textContent = `Round: 0`
 
     //i suspect its not getting called in every iteration
   }
@@ -80,8 +84,9 @@ scoreboard ()
 
   function scoreTotal() {
     let results = document.querySelector('div.results')
+    let roundo= document.querySelector ('div.rounds')
     results.textContent = `Player: ${pointsPlayer} - Computer: ${pointsComputer}`
-    console.log(`Roundo: ${rounds}`)
+    roundo.textContent = (`Round: ${rounds}`)
     rounds ++
   } 
 
@@ -98,43 +103,33 @@ scoreboard ()
             
             if (computerSelection === 'rock') {
                 if (playerSelection === 'scissors'){
-                  
-                    battle (playerSelection, computerSelection, 'YOU LOSE', 'Try as you might the scissors snaps in two')
                     pointsComputer ++
-                    return false;
+                    battle (playerSelection, computerSelection, 'YOU LOSE', 'Try as you might the scissors snaps in two')
                     
                 } else if (playerSelection === 'paper'){
-                  
-                    battle (playerSelection, computerSelection, 'YOU WIN', 'Paper hugs rock, love wins')
                     pointsPlayer ++
-                    return true;
+                    battle (playerSelection, computerSelection, 'YOU WIN', 'Paper hugs rock, love wins')
 
                 }
             }  else if (computerSelection === 'paper') {
                 if (playerSelection === 'rock'){
-                   
-                    battle (playerSelection, computerSelection, 'YOU LOSE', 'ROCK NO LIKE PERSONAL SPACE INVADED, ROCK NO COMFORTABLE') 
                     pointsComputer ++
-                    return false;
-                    
+                    battle (playerSelection, computerSelection, 'YOU LOSE', 'ROCK NO LIKE PERSONAL SPACE INVADED, ROCK NO COMFORTABLE') 
+                 
                 } else if (playerSelection === 'scissors'){
-                   
-                    battle (playerSelection, computerSelection, 'YOU WIN', 'Cutting is fun', true)
                     pointsPlayer ++
-                    return true;
+                    battle (playerSelection, computerSelection, 'YOU WIN', 'Cutting is fun', true)
+                    
                 }
             } else  if (computerSelection === 'scissors'){
                 if (playerSelection === 'paper'){
-                  
-                    battle (playerSelection, computerSelection, 'YOU LOSE', 'Who knew, scissors can cut through paper')
                     pointsComputer ++
-                    return false;
+                    battle (playerSelection, computerSelection, 'YOU LOSE', 'Who knew, scissors can cut through paper')
 
                 } else if (playerSelection === 'rock'){
-                   
-                    battle (playerSelection, computerSelection, 'YOU WIN', 'ROCK SMASH SILLY TOOL')
                     pointsPlayer ++
-                    return true;
+                    battle (playerSelection, computerSelection, 'YOU WIN', 'ROCK SMASH SILLY TOOL')
+                    
                 }
             } 
             if (computerSelection === playerSelection) {
@@ -151,7 +146,7 @@ scoreboard ()
         return true
         }
 
-    function game(){
+    function game(playerSelection, computerSelection){
         /*PROBLEM:
         -arguments keep incrementing at seemingly random
         -endgame wont play
@@ -167,7 +162,7 @@ scoreboard ()
         }else if (pointsComputer === 5) {
             endGame(pointsPlayer, pointsComputer)
         }else{
-            playRound(getPlayerChoice)
+            playRound(playerSelection, computerSelection)
         }
 
         
@@ -176,9 +171,11 @@ scoreboard ()
 
     function endGame(playerScore, computerScore) {
         if (playerScore > computerScore){
-            console.log('win')
+            battle ('Player: Win', "Computer: Lose")
+            //console.log('win')
             }else if (playerScore < computerScore){
-            console.log('lose')
+            battle ('Player: Win', "Computer: Lose")
+            //console.log('lose')
             }else if (playerScore === computerScore){
             console.log('tie')
             }
@@ -194,7 +191,7 @@ scoreboard ()
             buttons.addEventListener ('click',  (e) => {
             
             
-            playRound(e.target.innerText, getComputerChoice())
+            game(e.target.innerText, getComputerChoice())
             
       
         })
